@@ -8,8 +8,14 @@
     <title>Document</title>
 </head>
 <body>
+<?php
+if (isset($_GET["send"])) {
+    echo $_GET["hoten"] . "<br>";
+    echo $_GET["gender"] . "<br>";
+    echo $_GET["matkhau"] . "<br>";
+}
 
-
+?>
 
 <form action="" method="get">
     <table>
@@ -18,9 +24,13 @@
             <td><input type="text" name="hoten" id=""></td>
         </tr>
         <tr>
+            <td>Pass</td>
+            <td><input type="password" name="matkhau" id=""></td>
+        </tr>
+        <tr>
             <td>Gender</td>
-            <td><input type="radio" name="gender" value="0" checked >Nữ</td>
-            <td><input type="radio" name="gender" value="1" >Nam</td>
+            <td><input type="radio" name="gender" value="0" checked>Nữ</td>
+            <td><input type="radio" name="gender" value="1">Nam</td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" name="send" value="Gửi" id="">

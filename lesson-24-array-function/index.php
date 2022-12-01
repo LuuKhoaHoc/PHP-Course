@@ -98,7 +98,7 @@ echo "</pre>";
 
 <?php
 echo "Xóa 1 phần tử ở vị trí bất kỳ: <br>";
-unset($mang["c3"]);
+unset($mang["1"]);
 echo "<pre>";
 print_r($mang);
 echo "</pre>";
@@ -127,6 +127,215 @@ echo "Phần tử nhỏ nhất: <br>" . min($so) . "<br>";
 <?php
 echo "Phần tử lớn nhất: <br>" . max($so) . "<br>";
 ?>
+
+<hr>
+
+<?php
+echo "Kiểm tra giá trị tồn tại trong mảng: </br>";
+$check = in_array("bánh bò",$mang);
+var_dump($check);
+?>
+
+<hr>
+
+<?php
+echo "Gộp mảng: <br>";
+$mangmoi = array_merge($mang,$so);
+echo "<pre>";
+print_r($mangmoi);
+echo "</pre>";
+?>
+
+<hr>
+
+<?php
+echo "Trích mảng: <br>";
+$mangtrich = array_slice($mangmoi,2,4);
+echo "<pre>";
+print_r($mangtrich);
+echo "</pre>";
+?>
+
+<hr>
+
+<?php
+echo "Chuyển mảng thành chuỗi dựa vào ký tự: <br>";
+$mangthanhchuoi = implode("|",$mang);
+echo $mangthanhchuoi;
+?>
+
+<hr>
+
+<?php
+echo "Chuyển chuỗi thành mảng: <br>";
+$chuoidata = "Khóa học lập trình PHP|Khóa học lập trình Android|Khóa học lập trình IOS";
+$chuoithanhmang = explode("|",$chuoidata);
+echo "<pre>";
+print_r($chuoithanhmang);
+echo "</pre>";
+?>
+
+<hr>
+
+<?php
+echo "Chuyển mảng thành chuỗi (thường dùng trong việc lưu mảng trong database ) <br>";
+$truonghoc = [
+    "lop1" => [
+        "hs01" => [
+            "ten"   => "Hoc",
+            "phone" => "0123456789",
+            "email" => "contact.lkhoc@gmail.com",
+        ],
+        "hs02" => [
+            "ten"   => "Teo",
+            "phone" => "0368481562",
+            "email" => "teomkasd@gmail.com",
+        ],
+        "hs03" => [
+            "ten"   => "Tu",
+            "phone" => "08715548521",
+            "email" => "tutimtata@gmail.com",
+        ],
+    ],
+    "lop2" => [
+        "hs01" => [
+            "ten"   => "Trang",
+            "phone" => "0684912453",
+            "email" => "trangalal@gmail.com",
+        ],
+        "hs02" => [
+            "ten"   => "Thư",
+            "phone" => "0368415405",
+            "email" => "thuthuthu@gmail.com",
+        ],
+        "hs03" => [
+            "ten"   => "Trúc",
+            "phone" => "0545871524",
+            "email" => "truchohe@gmail.com",
+        ],
+        "hs04" => [
+            "ten"   => "Vy",
+            "phone" => "0898735051",
+            "email" => "vuonglethanhvy@gmail.com",
+        ],
+
+    ],
+    "lop3" => [
+        "hs01" => [
+            "ten"   => "Hà",
+            "phone" => "0885425548",
+            "email" => "huynhthanha@gmail.com",
+        ],
+        "hs02" => [
+            "ten"   => "Hồ",
+            "phone" => "0888300779",
+            "email" => "Hohungho@gmail.com",
+        ],
+    ],
+    "lop4" => [
+        "hs01" => [
+            "hovaten" => [
+                "ho"     => "Lưu",
+                "tendem" => "Khoa",
+                "ten"    => "Học",
+            ],
+            "phone"   => "0885425548",
+            "email"   => "huynhthanha@gmail.com",
+        ],
+        "hs02" => [
+            "hovaten" => [
+                "ho"     => "Lý",
+                "tendem" => "Vĩ",
+                "ten"    => "Phong",
+            ],
+            "phone"   => "0888300779",
+            "email"   => "Hohungho@gmail.com",
+        ],
+    ],
+];
+
+$chuoidb = serialize($truonghoc);
+echo $chuoidb;
+
+?>
+
+<hr>
+
+<?php
+echo "Chuyển trừ chuỗi thành mảng ( thường dùng khi database trả dữ liệu ) <br>" ;
+$mangtuserialize = unserialize($chuoidb);
+echo "<pre>";
+print_r($mangtuserialize);
+echo "</pre>";
+
+?>
+
+<hr>
+
+<?php
+shuffle($mang);
+echo "<pre>";
+print_r($mang);
+echo "</pre>";
+?>
+
+<hr>
+
+
+<?php
+echo  "Tạo mảng dãy số: <br>";
+$dayso = range(1,100,5);
+echo "<pre>";
+print_r($dayso);
+echo "</pre>";
+?>
+
+<!--<hr>-->
+<!---->
+<?php
+//echo  "Sắp xếp mảng theo value tăng dần: <br>";
+//sort($mangmoi);
+//echo "<pre>";
+//print_r($mangmoi);
+//echo "</pre>";
+//
+//?>
+<!---->
+<!--<hr>-->
+<!---->
+<?php
+//echo  "Sắp xếp mảng theo value giảm dần: <br>";
+//rsort($mangmoi);
+//echo "<pre>";
+//print_r($mangmoi);
+//echo "</pre>";
+//
+//?>
+
+<hr>
+
+<?php
+echo  "Sắp xếp mảng theo key tăng dần: <br>";
+ksort($mangmoi);
+echo "<pre>";
+print_r($mangmoi);
+echo "</pre>";
+
+?>
+
+<hr>
+
+<?php
+echo  "Sắp xếp mảng theo key giảm dần: <br>";
+krsort($mangmoi);
+echo "<pre>";
+print_r($mangmoi);
+echo "</pre>";
+
+?>
+
+
+
 
 
 </body>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 $data = array(
     array(
         "id" => 1,
@@ -91,4 +91,3 @@ $data = array(
         "parent" => 10
     ),
 );
-?>
