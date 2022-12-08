@@ -11,11 +11,14 @@ if (isset($_POST["create"])) {
     if (empty($errors)) {
         $data = array(
             'name'   => $_POST["name"],
-            'parent' => 0,
+            'parent' => $_POST["parent"],
         );
 
-        if (check_category_exist($conn, $_POST["name"])) {
+        if (check_category_exist($conn, $data)) {
             create_category($conn, $data);
+
+            header("location: index.php?module=category");
+            exit();
         } else {
             $errors[] = "Tên thể loại này đã tồn tại rồi";
         }
@@ -62,45 +65,9 @@ if (empty($errors) && isset($_POST["create"])) { ?>
         <div class="card-body">
             <div class="form-group">
                 <label>Thể loại cha</label>
-                <select class="form-control">
+                <select class="form-control" name="parent">
                     <option value="0">-----ROOT-----</option>
-                    <?php
-                    foreach ($parent_category as $key => $item) {
-                        if ($item["parent"] == 0) {
-                            echo "<option value=".$item["id"].">".$item["name"]
-                                ."</option>";
-                            unset($parent_category[$key]);
-
-                            foreach ($parent_category as $key_lv2 => $item_lv2)
-                            {
-                                if ($item_lv2["parent"] == $item["id"]) {
-                                    echo "<option value=".$item_lv2["id"]
-                                        .">---| ".$item_lv2["name"]
-                                        ."</option>";
-                                    unset($parent_category[$key_lv2]);
-
-                                    foreach (
-                                        $parent_category as $key_lv3 =>
-                                        $item_lv3
-                                    ) {
-                                        if ($item_lv3["parent"]
-                                            == $item_lv2["id"]
-                                        ) {
-                                            echo "<option value="
-                                                .$item_lv3["id"]
-                                                .">---|---| ".$item_lv3["name"]
-                                                ."</option>";
-                                            unset($parent_category[$key_lv3]);
-                                        }
-
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-
-                    ?>
+                    <?php recursiveOption($parent_category,$_POST["parent"]) ?>
                 </select>
             </div>
             <div class="form-group">

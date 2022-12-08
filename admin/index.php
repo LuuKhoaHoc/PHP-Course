@@ -2,6 +2,7 @@
 ob_start();
 include '../config.php';
 include '../libs/connect.php';
+include '../libs/functions.php';
 ?>
 
 <!DOCTYPE html>
