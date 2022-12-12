@@ -6,9 +6,9 @@ if ( ! isset($_GET["id"])) {
 } else {
     $errors          = array();
     $id              = $_GET["id"];
-    $parent_category = get_all_category($conn,true, $id);
+    $parent_category = get_all_category($conn, true, $id);
 
-    if (check_category_id ($conn,$id) == false) {
+    if (check_category_id($conn, $id) == false) {
         header("location: index.php?module=category&action=index");
         exit();
     }
@@ -24,7 +24,7 @@ if ( ! isset($_GET["id"])) {
             $data = array(
                 'name'   => $_POST["name"],
                 'parent' => $_POST["parent"],
-                'id' => $id,
+                'id'     => $id,
             );
 
             if (check_category_exist($conn, $data, true)) {
@@ -37,6 +37,8 @@ if ( ! isset($_GET["id"])) {
         }
     }
     ?>
+    <!--Thông báo lỗi -->
+
     <?php
     if ( ! empty($errors)) { ?>
         <div class="alert alert-danger alert-dismissible">
@@ -68,6 +70,7 @@ if ( ! isset($_GET["id"])) {
         </div>
         <?php
     } ?>
+    <!-- HTML form -->
 
     <form action="" method="post">
         <div class="card">
@@ -80,13 +83,15 @@ if ( ! isset($_GET["id"])) {
                     <select class="form-control" name="parent">
                         <option value="0">-----ROOT-----</option>
                         <?php
-                        recursiveOption($parent_category, $category["parent"]) ?>
+                        recursiveOption($parent_category,
+                            $category["parent"]) ?>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tên thể loại</label>
                     <input type="text" class="form-control" name="name"
-                           placeholder="Vui lòng nhập tên thể loại" value="<?=$category["name"] ?>">
+                           placeholder="Vui lòng nhập tên thể loại"
+                           value="<?= $category["name"] ?>">
                 </div>
             </div>
             <div class="card-footer">

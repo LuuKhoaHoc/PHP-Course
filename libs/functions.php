@@ -35,3 +35,22 @@ function recursiveTable ($data,$parent = 0, $str = "") {
         }
     }
 }
+
+function checkExt ($filename) {
+
+    $pos = strrpos($filename,'.') +1 ;
+    $ext = substr($filename,$pos);
+    if ($ext != "png" && $ext != "jpeg" && $ext != "jpg" && $ext != "gif" ) {
+        return false;
+    } else {
+        return true;
+    }
+}
+function changeNameFile ($filename) {
+    $filename = trim($filename);
+    $filename = mb_strtolower($filename);
+    $filename = preg_replace('!\s+!', ' ', $filename);
+    $filename = str_replace(' ','-',$filename);
+    $filename = time() .'-'.$filename;
+    return $filename;
+}

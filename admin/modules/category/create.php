@@ -25,6 +25,7 @@ if (isset($_POST["create"])) {
     }
 }
 ?>
+<!--Thông báo lỗi -->
 <?php
 if ( ! empty($errors)) { ?>
     <div class="alert alert-danger alert-dismissible">
@@ -56,7 +57,7 @@ if (empty($errors) && isset($_POST["create"])) { ?>
     </div>
     <?php
 } ?>
-
+<!-- HTML form -->
 <form action="" method="post">
     <div class="card">
         <div class="card-header">
