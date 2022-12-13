@@ -14,7 +14,8 @@
                      class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Lưu Khoa Học</a>
+                <a href="#" class="d-block"><?php echo $_SESSION["login"]["email"] ?>c</a>
+                <a href="logout.php" class="d-block text-center">Đăng xuất</a>
             </div>
         </div>
         <!-- SidebarSearch Form -->
