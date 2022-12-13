@@ -117,29 +117,28 @@ if ( ! empty($errors)) { ?>
             </div>
             <div class="form-group">
                 <label>Tóm tắt</label>
-                <textarea class="form-control" name="intro"><?php
+                <textarea class="form-control" id="intro" name="intro"><?php
                     if (isset($_POST["intro"])) {
                         echo $_POST["intro"];
                     }
 
                     ?></textarea>
                 <script>
-                    CKEDITOR.replace('intro', {
-                        filebrowserBrowseUrl: 'http://localhost/PHP-PROJECT/admin/public/plugins/ckfinder/ckfinder.html',
-                        filebrowserUploadUrl: 'http://localhost/PHP-PROJECT/admin/public/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                    });
+                    var editor = CKEDITOR.replace( 'intro' );
+                    CKFinder.setupCKEditor( editor );
                 </script>
             </div>
             <div class="form-group">
                 <label>Nội dung</label>
-                <textarea name="content" class="form-control"><?php
+                <textarea name="content" id="content"  class="form-control"><?php
                     if (isset($_POST["content"])) {
                         echo $_POST["content"];
                     }
 
                     ?></textarea>
                 <script>
-                    CKEDITOR.replace('content');
+                    var editor = CKEDITOR.replace( 'content' );
+                    CKFinder.setupCKEditor( editor );
                 </script>
             </div>
             <div class="form-group">

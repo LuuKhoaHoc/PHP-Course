@@ -139,7 +139,7 @@ if ( ! isset($_GET["id"])) {
                 </div>
                 <div class="form-group">
                     <label>Tóm tắt</label>
-                    <textarea class="form-control" name="intro"><?php
+                    <textarea class="form-control" id="intro" name="intro"><?php
                         if (isset($_POST["intro"])) {
                             echo $_POST["intro"];
                         } else {
@@ -148,12 +148,13 @@ if ( ! isset($_GET["id"])) {
 
                         ?></textarea>
                     <script>
-                        CKEDITOR.replace( 'intro' );
+                        var editor = CKEDITOR.replace( 'intro' );
+                        CKFinder.setupCKEditor( editor );
                     </script>
                 </div>
                 <div class="form-group">
                     <label>Nội dung</label>
-                    <textarea name="content" class="form-control"><?php
+                    <textarea name="content" id="content" class="form-control"><?php
                         if (isset($_POST["content"])) {
                             echo $_POST["content"];
                         } else {
@@ -162,7 +163,8 @@ if ( ! isset($_GET["id"])) {
 
                         ?></textarea>
                     <script>
-                        CKEDITOR.replace( 'content' );
+                        var editor = CKEDITOR.replace( 'content' );
+                        CKFinder.setupCKEditor( editor );
                     </script>
                 </div>
 
