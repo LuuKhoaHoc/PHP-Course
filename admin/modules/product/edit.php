@@ -8,7 +8,7 @@ if ( ! isset($_GET["id"])) {
     $id              = $_GET["id"];
     $parent_category = get_all_category($conn, true, $id);
 
-    if (check_product_id($conn, $id) == false) {
+    if (!check_product_id($conn, $id)) {
         header("location: index.php?module=product&action=index");
         exit();
     }
@@ -103,8 +103,12 @@ if ( ! isset($_GET["id"])) {
                     <label>Thể loại</label>
                     <select class="form-control" name="category_id">
                         <?php
-                        recursiveOption($parent_category, $_POST["category_id"],
-                            3) ?>
+                        if (isset($_POST["category_id"])) {
+                            recursiveOption($parent_category, $_POST["category_id"],3);
+                        } else {
+                            recursiveOption($parent_category, $product["category_id"],3);
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="form-group">
@@ -172,7 +176,7 @@ if ( ! isset($_GET["id"])) {
                     <label>Hình ảnh hiện tại</label>
                     <img src="../public/upload/<?= $product["image"] ?>"
                          onError="this.onerror=null;this.src='../public/images/no-image.jpg';"
-                         width="100px" class="d-block">
+                         width="100px" class="d-block" alt="No-image">
                 </div>
 
                 <div class="form-group">

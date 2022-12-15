@@ -32,7 +32,7 @@ if (isset($_SESSION["login"])) {
                 $data                       = get_user($conn, $data);
                 $_SESSION["login"]["id"]    = $data["id"];
                 $_SESSION["login"]["email"] = $data["email"];
-                $_SESSION["login"]["level"] = $data["level"];;
+                $_SESSION["login"]["level"] = $data["level"];
                 header("location:index.php");
                 exit();
             } else {
@@ -72,7 +72,7 @@ if (isset($_SESSION["login"])) {
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="/"><b>SUM</b>&nbsp;Academy</a>
+        <a href="/"><strong>SUM</strong>&nbsp;Academy</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">

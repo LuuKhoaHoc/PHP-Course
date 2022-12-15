@@ -85,8 +85,12 @@ if ( ! empty($errors)) { ?>
                 <label>Thể loại</label>
                 <select class="form-control" name="category_id">
                     <?php
-                    recursiveOption($parent_category, $_POST["category_id"],
-                        3) ?>
+                    if (isset($_POST["category_id"])) {
+                    recursiveOption($parent_category, $_POST["category_id"],3);
+                    } else {
+                        recursiveOption($parent_category, 0,3);
+                    }
+                    ?>
                 </select>
             </div>
             <div class="form-group">

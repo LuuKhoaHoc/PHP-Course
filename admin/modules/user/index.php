@@ -24,11 +24,16 @@
                 <tr>
                     <td><?= $stt ?></td>
                     <td><?= $user["email"] ?></td>
-                    <td><?php if ($user["level"] ==1) {
+                    <td>
+                        <?php
+                        if($user["id"] == 1) {
+                            echo "<strong><span class='text-red'>SuperAdmin</span></strong>";
+                        } else if ($user["level"] == 1) {
                         echo "<span class='text-red'>Admin</span>";
                         } else {
                             echo "<span>Member</span>";
-                        } ?></td>
+                        } ?>
+                    </td>
                     <td>
                         <a onclick="return checkDelete('Bạn có chắc chắn muốn xóa thành viên này không?')"
                            href="index.php?module=user&action=delete&id=<?= $user["id"] ?>">Xóa</a>
